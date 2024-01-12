@@ -1,0 +1,78 @@
+1st month current user = 10000 request      90kb * 10000 = 90000
+3rd month user         = 70000 request      90kb * 70000 = 6300000
+
+To achive this how many vm you need 
+1) utilazation 
+2) number of request
+3) pick time hour
+
+walmart.com 
+90kb per page 
+
+page (90kb) * 1st month request (10000) = 90000 user request
+page (90kb) * 3rd month request (70000) = 6300000 user request
+
+70000 request are coming at a time we need to define some approximate the 
+Disk, network plus Application Perfomance and Application location has to
+be consider . 
+when we try 201 request on 1cpu and 1 MGB the server virtual machine(VM) crash so we need to upgrade our Cpu and MGB 
+to 2cpu and 2 MGB we will upgrade it till will get 70000 request 
+
+70000 request are coming at a time how many VM will you create 
+
+
+ walmart.com | request | cpu | memory- GB|          VM
+ 90kb        | 200     |  1  |   1       |200*90 = 18000 is stable for 200 request for 1 cpu and 1 MGB
+ 90kb        | 430     |  2  |   2       |430*90 = 38700 is stable for 430 request for 2 cpu and 2 MGB     |
+ 90kb        | 600     |  3  |   3       |600*90 = 54000 is stable for 600 request for 3 cpu and 3 MGB 
+ 90Kb        | 1000    |  20 |   20      |1000*90 = 900000 is stable for 1000 request for 20 cpu and 20 MGB
+ 90kb        | 70000   |  75 |   75      |70000*90 = 63000000 is stable for 7000 request for 75 cpu and 75 MGB
+ 
+ 70000 request are coming at a time how many VM will you create
+                  cpu     | memory | no of VM
+minimum    t2 micro  1   |   1    |    20
+           t2large   2   |   4    |    10
+		   t2xlarge	 4   |   16   |    5 
+			
+			
+maximum	
+ 
+we can use this minimum 20vm and maximum 75vm to create an (autoscaling group). "20vm" will control the request of
+"90000" kb and the "75vm" will control the request of "63000000 kb"
+
+=========================================================================
+TYPE             FAMILY           USECASE
+=========================================================================
+t2           | General Purpose   | DEV enviroments  
+m3,m4        | General Purpose   | Application server
+C3,C4 series | Compute Optimized | CPU intensive App/DB
+D3           | Storage Optimized | File server, Data Warehousing,Hadoop
+i2           | Storage Optimized | High Speed Storage{data warehouse, DB}
+G2           | Graphic Optimized | Video Encoding . 3D rendering 
+R3, R4       | Memory  Optimized | Memory Intensive applications
+X1           | Memory  Optimized | Super Memory intensive applications
+
+  EASY WAY TO REMEMBER IS 
+                          C for Compute
+						  D for DEV
+						  G for Graphic
+						  i for IOPS
+						  M for main choice for general pupose 
+						  R for RAM 
+						  T for Cheap General pupose
+						  
+There are 4 ways to pay for an instance :
+.On Demand instance 
+.Reverser  instance
+.Spot      instance
+.Dedicated instance
+
+your Boss ask you to create 100vm . whqt will you ask him ?
+how many .Production  servers  up all time  
+         .Development servers  once in 2 to 3 months		 
+		 .Monitoring  servers  up all time 
+		 .Backup      servers  maybe daily 12am to 7am,weekly,once in a month depend on the project
+		 .Paching     servers  Avalible when needed 
+
+
+learning from Cloudnloud 𝐢𝐧𝐭𝐞𝐫𝐧𝐬𝐡𝐢𝐩 𝐩𝐫𝐨𝐠𝐫𝐚𝐦
