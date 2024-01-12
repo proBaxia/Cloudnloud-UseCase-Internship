@@ -35,7 +35,8 @@ minimum    t2 micro  1   |   1    |    20
 		   t2xlarge	 4   |   16   |    5 
 			
 			
-maximum	
+maximum	    t2 micro 1   |    1   |    75
+            t2xlarge 4   |    16  |    19
  
 we can use this minimum 20vm and maximum 75vm to create an (autoscaling group). "20vm" will control the request of
 "90000" kb and the "75vm" will control the request of "63000000 kb"
@@ -75,4 +76,4 @@ how many .Production  servers  up all time
 		 .Paching     servers  Avalible when needed 
 
 
-learning from Cloudnloud 𝐢𝐧𝐭𝐞𝐫𝐧𝐬𝐡𝐢𝐩 𝐩𝐫𝐨𝐠𝐫𝐚𝐦
+learning from Cloudnloud 𝐢𝐧𝐭𝐞𝐫𝐧𝐬𝐡𝐢𝐩 𝐩𝐫𝐨𝐠𝐫𝐚𝐦   
