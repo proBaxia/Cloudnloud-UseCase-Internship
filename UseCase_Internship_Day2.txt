@@ -1,0 +1,70 @@
+  Application Load Balancer 
+  ==========================
+> Distribute incoming traffic across attached EC2 instance across AZ
+
+> Highiy available and scalable 
+
+> Supports protocols like HTTP,HTTPS,TCP,SSL(termination)
+
+> Receivies Public DNS Canonical name (CNAME) for endpoint 
+
+> Performs instance health checks 
+
+> Supports vatious routing - Round Robin,Path based, Host Based
+       
+STEPS- PART 1
+--------------
+> Create a VPC,2pubblic Subnets and 2 Private subnets in different AZs
+
+    vpc IPv4 CIDR 10.10.0.0/16
+    public  subnets CIDR 10.10.1.0/24
+	public  subnets CIDR 10.10.2.0/24
+    Private subnets CIDR 10.10.3.0/24
+	Private subnets CIDR 10.10.4.0/24
+	
+> Launch 2 EC2 instances in 2 Private subnetsfrom preconfigured AMIs
+   . in security group allow porth 80 for vpc CIDR 
+   
+> Create EC2 Target group and add these 2 EC2 instances into target group  
+   . Configure target as port 80 and health check at /index.html
+   
+> Create Application Load balancer
+   . Use 2 public subnetsto launch ALB   
+   . Configure listener at port 80 
+   . Configure security group and allow port 80 from anywhere
+   . Attach to Target group create above 
+   . Wait for instances to be Healthy in given target group
+ 
+. GET THE LOAD BALANCER DNS AND TRY TO ACCESS OVER INTERNET WEB 
+
+STEPS- Path2 - Enable Stickiness
+--------------------------------
+> Go to Target group
+> Edit Attributes 
+> Enable Stickiness with Stickiness duration of 30 secs
+> Now try to hit the load balancer DNS again
+> Refresh the page multiple times -> you should see same web page due to session stickiness 
+
+STEPS - Path 3 - ALB custom Domain 
+-----------------------------------
+> Go to AWS Route53 (assuming you have your own Domain name purchased already.
+ in orther to see how to redirect DNS from say godaddy to AWS Route53,
+ refer Hosting website on s3 with custom domain name session )
+ 
+> In Public hosted zone for your domain, create A record of type Alias and point
+  it to ALB 
+
+> Wait for 1-5 minutes 
+
+> Now try to access your domain URL. you should be able to access the same web
+  pages being served by Load Balancer 
+  
+STEPS- Path 4 - ALB serving HTTPS traffic 
+> Add a HTTPS listener to ALB 
+> While configuring Https listener,get the SSl Certificate From Amazon Certificate
+  manager (you must own domain name to validate the certificate) 
+> Deploy Certificateon ALB for HTTPS listener
+> Forward the traffic to same Target group createfor HTTP traffic 
+> Modify ALB security group and allow traffic for HTTPS (443)
+> Access web application using https://your-domain-name  
+   
