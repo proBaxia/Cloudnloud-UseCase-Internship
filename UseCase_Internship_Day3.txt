@@ -1,0 +1,109 @@
+RPO > Recovery Point Objective is specifiically about data in orther to maintain
+conitinuity. it is essential to derterming how often a business should schedule 
+data backup on their network. RPO >  means how quickly you can avoid data loss 
+
+RTO > Recovery Time Objective is how long it will take an organazation to get back 
+up and runnung to the Recovery Point Objective. RTO >  means high availability how 
+quick you can restore your business
+
+
+NFR 
+
+Customer used to give these RTO/RPO expectations in NFR (Non Functionnal requirements) document.
+As an infrastructure person we should review and understand the business needs.Normally
+NFR document contains the business expectations.in orther to achieve those business expectation
+what necessary infrastructure required is our call to plan end across the platform 
+
+ Functional Requirements Example
+---------------------------------
+1) Authenticate of user whenever he/she logs ito the system.
+2) system shuown incase of cyber attack.
+3) A verification email is sent to user  wheneverhe/she registers foe the first time on some system.
+4) only Mangerial level employees have right to view revenue data.
+5) The software system should be integrated with banking app API 
+6) The software system should pass Section 508 accessibility requirement.
+
+NON Functional Requirements Example
+------------------------------------
+1) Emails Should be sent with a latentcy of no greater than 12 hours from such an
+ activity.
+
+2) The processing of each request should be done with 10 secondss.
+
+3) The site should load in 3 seconds when the number of simultaneous user are > 10000
+
+
+4) Users must change the initially assinged login password immediately after successful
+  login.
+
+5) Employees never allowed to update their salary information.Such attempt should
+  be reported to the security adminstrator.
+
+6) Ever unsucessessful attempt by user to access an item of data shall be recorded on audit trail.
+A website should be capable enough to hanndle 20 million users with affecting its performance 
+tThe software should portable . so moving from one OS to other OS does create any problem .
+Privacy of information,the export of restricted technologies , intellectual property right,etc shouldbe audited.
+Portability 
+Security 
+Maintainabilty
+Reliabilty
+Scalability 
+Performance
+Reusability
+Flexibility
+
+
+Public Cloud:
+
+Definition: In a public cloud, computing resources (such as servers, storage, and applications) are owned and operated
+by a third-party cloud service provider and are made available to the general public or a large industry group.
+
+Key Characteristics:
+********************
+Accessibility: Services are available to anyone on the internet.
+Shared Resources: Resources are shared among multiple customers, leading to cost savings.
+Scalability: Easily scalable to accommodate varying workloads.
+Examples: Amazon Web Services (AWS), Microsoft Azure, Google Cloud Platform (GCP)
+
+Private Cloud:
+---------------
+Definition: In a private cloud, computing resources are used exclusively by a single business or organization. 
+The infrastructure can be physically located on-premises (on-site) or hosted by a third-party provider.
+
+Key Characteristics:
+********************
+Dedicated Resources: Resources are exclusively used by a single organization.
+
+Control: Offers greater control over security and customization.
+
+Scalability: Can be less scalable than public clouds but offers more control over scalability.
+Examples: On-premises data centers, dedicated hosting environments.
+
+Hybrid Cloud:
+-------------
+Definition: A hybrid cloud is a combination of public and private clouds, allowing data and applications to be shared
+between them. It provides greater flexibility and more deployment options.
+
+Key Characteristics:
+********************
+Integration: Enables the seamless integration of on-premises infrastructure with public cloud services.
+
+Data Portability: Allows data and applications to move between public and private environments.
+
+Flexibility: Provides flexibility in choosing where to run specific workloads based on requirements.
+
+Examples: Organizations might use a private cloud for sensitive workloads and a public cloud for scalable tasks or backup.
+
+Considerations:
+***************
+Security: Private clouds offer more control over security, while public clouds leverage the security measures provided by
+the service provider.
+
+Cost: Public clouds often provide cost advantages due to shared resources, while private clouds may be more cost-effective for
+certain workloads or when compliance requirements demand dedicated resources.
+
+Flexibility: Hybrid clouds provide a balance of flexibility and control, allowing organizations to choose the best environment
+for each workload.
+
+The choice between public, private, or hybrid cloud depends on factors such as data sensitivity, regulatory compliance,
+scalability needs, and budget considerations for a particular organization.
